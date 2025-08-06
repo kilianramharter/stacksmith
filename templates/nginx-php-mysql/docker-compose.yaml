@@ -1,0 +1,9 @@
+services:
+  nginx:
+    image: nginx:latest
+    container_name: ${PROJECT_NAME}_nginx
+    ports:
+      - "${PORT}:80"
+    volumes:
+      - ./html:/usr/share/nginx/html
+      
