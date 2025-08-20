@@ -6,4 +6,11 @@ services:
       - "${PORT}:80"
     volumes:
       - ./html:/usr/share/nginx/html
-      
+    depends_on:
+      - php
+
+  php:
+    image: php:8.2-fpm
+    container_name: ${PROJECT_NAME}_php
+    volumes:
+      - ./html:/var/www/html

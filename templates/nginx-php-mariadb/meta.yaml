@@ -1,0 +1,3 @@
+name: nginx + PHP + MariaDB
+description: Web development stack with a database.
+version: 0.1.0

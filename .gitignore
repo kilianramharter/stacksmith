@@ -9,9 +9,13 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 .idea/
+.vscode/
 
 # Template folders (will be copied into new projects, not tracked)
 playground/*
 !playground/.gitkeep
 projects/*
 !projects/.gitkeep
+
+# Other random stuff
+ansitable.sh
