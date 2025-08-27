@@ -1,0 +1,21 @@
+services:
+  mailserver:
+    image: greenmail/standalone:latest
+    container_name: mailserver
+    ports:
+      - "3143:3143" # IMAP
+      - "3025:3025" # SMTP
+    environment:
+      GREENMAIL_OPTS: "-Dgreenmail.setup.test.imap -Dgreenmail.setup.test.smtp -Dgreenmail.users=${USERNAME}:${PASSWORD}@mail.local -Dgreenmail.hostname=0.0.0.0"
+
+  webmail:
+    image: ghcr.io/the-djmaze/snappymail:latest
+    container_name: webmail
+    restart: unless-stopped
+    ports:
+      - "8888:8888"
+    volumes:
+      #- ./snappymail:/var/lib/snappymail
+      - ./config/snappymail/admin_password.txt:/var/lib/snappymail/_data_/_default_/admin_password.txt
+      - ./config/snappymail/configs/:/var/lib/snappymail/_data_/_default_/configs
+      - ./config/snappymail/domains:/var/lib/snappymail/_data_/_default_/domains
